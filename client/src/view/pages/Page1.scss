@@ -1,0 +1,56 @@
+#Page1 {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //background-image: radial-gradient(87.68% 87.68% at 95.36% 14.36%, #FFD840 0%, #F3ACFF 55.86%, #8AECFF 100%);
+  //mix-blend-mode: normal;
+  //opacity: 0.3;
+
+  //&::before { //opacity:0.3이 텍스트에 영향을 끼치지 않게 하도록 작성한 코드
+  //  content: "";
+  //  position: absolute;
+  //  top: 0;
+  //  left: 0;
+  //  right: 0;
+  //  bottom: 0;
+  //  background-color: rgba(255, 255, 255, 0.7);
+  //}
+
+  .titleWrapper {
+    display: flex;
+    font-weight: 500;
+    font-size: 90px;
+    .mainTitle1 {
+      color: #0351FF;
+    }
+    .mainTitle2 {
+    }
+  }
+
+  .subTitle {
+    font-size: 30px;
+    color: #0351FF;
+    font-weight: 500;
+  }
+
+  .startButtonContainer {
+    display: flex;
+    width: 374px;
+    height: 62px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    background-color: #0351FF;
+    border-radius: 20px;
+
+    .startButtonText {
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+
+    }
+  }
+}

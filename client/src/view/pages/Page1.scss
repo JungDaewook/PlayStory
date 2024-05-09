@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 0 70px 0;
   //background-image: radial-gradient(87.68% 87.68% at 95.36% 14.36%, #FFD840 0%, #F3ACFF 55.86%, #8AECFF 100%);
   //mix-blend-mode: normal;
   //opacity: 0.3;
@@ -23,9 +24,11 @@
     display: flex;
     font-weight: 500;
     font-size: 90px;
+
     .mainTitle1 {
       color: #0351FF;
     }
+
     .mainTitle2 {
     }
   }
@@ -45,6 +48,10 @@
     margin-top: 25px;
     background-color: #0351FF;
     border-radius: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .startButtonText {
       color: white;

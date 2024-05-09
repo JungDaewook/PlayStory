@@ -1,0 +1,70 @@
+#PageInputInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //background-color: red;
+  width: 394px;
+  padding: 0 0 70px 0;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+    //background-color: blue;
+  }
+
+  .information-input-wrapper {
+    background-color: white;
+    width: 394px;
+    margin-top: 20px;
+
+    .information-input-header {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 346px;
+      padding: 17px 22px;
+      border: 2px solid #E9EBED;
+      background: #FFFFFF;
+      outline: none;
+      margin-top: 10px;
+
+      &:focus {
+        border: 2px solid #0351FF;
+      }
+
+      &::placeholder {
+        color: #AAB6CA;
+      }
+    }
+  }
+
+  .doneButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    .doneButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 54px;
+      width: 200px;
+      font-size: 20px;
+      color: white;
+      font-weight: 600;
+      background-color: #0351FF;
+      margin-top: 20px;
+      border-radius: 12px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+}

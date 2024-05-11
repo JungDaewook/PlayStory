@@ -1,7 +1,8 @@
 import React from 'react';
 import "./PageGameSelect.scss";
-import {useState, useMemo, useCallback} from "react";
+import {useState, useMemo, useCallback, useEffect} from "react";
 import likeIcon from "../assets/LikeIcon.png";
+import {AiOutlineArrowRight} from "react-icons/ai";
 
 function PageGameSelect(props) {
 
@@ -34,8 +35,15 @@ function PageGameSelect(props) {
     }, []);
 
     const [selectedItems, setSelectedItems] = useState(Array(imageUrlList.length).fill(false))
+    const [isSelectedEnough, setIsSelectedEnough] = useState(false);
+
+    const selectedItemCount = useMemo(() => {
+        return selectedItems.filter(item => item).length;
+    }, [selectedItems]);
+
 
     const selectedStyle = {filter: "drop-shadow(3px 3px 4px #7c7c7c) brightness(50%)"};
+    const notSelectedEnoughButtonStyle = {backgroundColor: "#AAB6CA"};
 
     const handleItemClick = useCallback((index) => {
         setSelectedItems(prevState => {
@@ -46,6 +54,11 @@ function PageGameSelect(props) {
         });
     }, []);
 
+    useEffect(() => {
+        if (selectedItemCount >= 3) setIsSelectedEnough(true);
+        else setIsSelectedEnough(false);
+    }, [selectedItemCount]);
+
     return (
         <div id={"PageGameSelect"}>
             <div className={"content-wrapper"}>
@@ -53,8 +66,10 @@ function PageGameSelect(props) {
                     <div className={"header-text"}>
                         정대욱님, <br/>당신은 어떤 게임을 좋아하시나요?
                     </div>
-                    <div className={"doneButton"}>
-                        3개 이상 선택해주세요 (0/3)
+                    <div className={"doneButton"} style={!isSelectedEnough ? notSelectedEnoughButtonStyle : {}}>
+                        <div className={"leftArea"}></div>
+                        <div className={"buttonText"}> 3개 이상 선택해주세요 ({selectedItemCount})</div>
+                        <div className={"arrowIcon"}><AiOutlineArrowRight/></div>
                     </div>
                 </div>
                 <div className={"game-wrapper"}>

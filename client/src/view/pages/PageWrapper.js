@@ -4,6 +4,7 @@ import "./PageWrapper.scss"
 import {useState, useMemo, useEffect} from "react";
 import PageInputInformation from "./PageInputInformation";
 import PageGameSelect from "./PageGameSelect";
+import PageRecommendation from "./PageRecommendation";
 
 function PageWrapper(props) {
 
@@ -24,7 +25,9 @@ function PageWrapper(props) {
                 return <PageInputInformation nickName={nickName} setNickName={setNickName} sex={sex} setSex={setSex}
                                              age={age} setAge={setAge} setPageNum={setPageNum}/>;
             case 2:
-                return <PageGameSelect/>;
+                return <PageGameSelect setPageNum={setPageNum} nickName={nickName}/>;
+            case 3:
+                return <PageRecommendation nickName={nickName}/>
             default:
                 return <PageStart pageNum={pageNum}/>;
         }

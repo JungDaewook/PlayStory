@@ -25,7 +25,7 @@
 
       .doneButton {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width: 360px;
         height: 80px;
@@ -35,10 +35,14 @@
         font-weight: 500;
         border-radius: 20px;
 
+        .leftArea {
+          opacity: 0;
+        }
+
         .arrowIcon {
           display: flex;
           align-items: center;
-          padding-right: 10px;
+          //padding-right: 10px;
         }
 
         &:hover {

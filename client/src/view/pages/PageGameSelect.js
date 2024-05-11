@@ -34,7 +34,6 @@ function PageGameSelect(props) {
     }, []);
 
     const [selectedItems, setSelectedItems] = useState(Array(imageUrlList.length).fill(false))
-    const [isSelected, setIsSelected] = useState(false);
 
     const selectedStyle = {filter: "drop-shadow(3px 3px 4px #7c7c7c) brightness(50%)"};
 
@@ -45,7 +44,7 @@ function PageGameSelect(props) {
             return newState;
 
         });
-    }, [isSelected]);
+    }, []);
 
     return (
         <div id={"PageGameSelect"}>

@@ -1,8 +1,19 @@
 import React, {useState, useMemo, useEffect, useCallback} from 'react';
 import "./PageInputInformation.scss";
 import CustomSelect from "../component/CustomSelect";
+import {createUser} from "../../api/ApiFuncs";
 
-function PageInputInformation({nickName, setNickName, sex, setSex, age, setAge, setPageNum}) {
+function PageInputInformation({
+                                  nickName,
+                                  setNickName,
+                                  sex,
+                                  setSex,
+                                  age,
+                                  setAge,
+                                  setPageNum,
+                                  userInformation,
+                                  setUserInformation
+                              }) {
 
     const [inputNickName, setInputNickName] = useState('');
     const [inputSex, setInputSex] = useState('');
@@ -36,9 +47,14 @@ function PageInputInformation({nickName, setNickName, sex, setSex, age, setAge, 
     const focusStyle = {border: "2px solid #0351FF"};
     const nonCompleteStyle = {backgroundColor: "#AAB6CA"};
 
-    const onClickDoneButton = useCallback(() => {
-        if (isInputComplete) setPageNum(2);
-    }, [isInputComplete]);
+    const onClickDoneButton = useCallback(async () => {
+        if (isInputComplete) {
+            const gender = inputSex == "남성" ? 'M' : 'F'
+            const userInformationResponse = await createUser(Number(inputAge), gender, inputNickName);
+            setUserInformation(userInformationResponse);
+            setPageNum(2);
+        }
+    }, [isInputComplete, inputAge, inputSex, inputNickName]);
 
     return (
         <div id={"PageInputInformation"}>

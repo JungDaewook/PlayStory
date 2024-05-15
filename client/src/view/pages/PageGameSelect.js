@@ -3,6 +3,7 @@ import "./PageGameSelect.scss";
 import {useState, useMemo, useCallback, useEffect} from "react";
 import likeIcon from "../assets/LikeIcon.png";
 import {AiOutlineArrowRight} from "react-icons/ai";
+import {getBaseGames} from "../../api/ApiFuncs";
 
 function PageGameSelect({setPageNum, nickName}) {
 
@@ -33,6 +34,16 @@ function PageGameSelect({setPageNum, nickName}) {
             "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
         ]);
     }, []);
+
+    const baseGames = useMemo(async () => {
+        const baseGamesList = await getBaseGames();
+        return baseGamesList
+    }, [])
+
+    useEffect(() => {
+        console.log(baseGames);
+    }, [baseGames]);
+
 
     const [selectedItems, setSelectedItems] = useState(Array(imageUrlList.length).fill(false))
     const [isSelectedEnough, setIsSelectedEnough] = useState(false);

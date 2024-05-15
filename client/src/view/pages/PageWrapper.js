@@ -13,6 +13,8 @@ function PageWrapper(props) {
     const [sex, setSex] = useState(0);
     const [age, setAge] = useState(0);
 
+    const [userInformation, setUserInformation] = useState({});
+    
     // useEffect(() => {
     //     console.log(nickName, sex, age);
     // }, [nickName, sex, age]);
@@ -23,7 +25,9 @@ function PageWrapper(props) {
                 return <PageStart pageNum={pageNum} setPageNum={setPageNum}/>;
             case 1:
                 return <PageInputInformation nickName={nickName} setNickName={setNickName} sex={sex} setSex={setSex}
-                                             age={age} setAge={setAge} setPageNum={setPageNum}/>;
+                                             age={age} setAge={setAge} setPageNum={setPageNum}
+                                             userInformation={userInformation}
+                                             setUserInformation={setUserInformation}/>;
             case 2:
                 return <PageGameSelect setPageNum={setPageNum} nickName={nickName}/>;
             case 3:

@@ -1,7 +1,8 @@
 import React from 'react';
-import {useState, useEffect, useMemo} from "react";
+import {useState, useEffect, useMemo, useCallback} from "react";
 import LoadingIcon from "../component/LoadingIcon";
 import "./PageRecommendation.scss";
+import { getContentBasedRecommendation } from '../../api/ApiFuncs';
 
 function PageRecommendation({nickName}) {
     const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,18 @@ function PageRecommendation({nickName}) {
             // "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
         ])
     }, [])
+
+    const [contentBasedGameList, setContentBasedGameList] = useState([]);
+
+    const getContentBasedRecommendationByServer = useCallback(async (baseGameList) => {
+        const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
+        setContentBasedGameList(contentBasedGamesResult.result);
+        return contentBasedGamesResult.result;
+    },[]);
+
+    useEffect(()=>{
+        getContentBasedRecommendationByServer(["Palworld", "League of Legends"]);
+    },[]);
 
     return (
         <div id={"PageRecommendation"}>
@@ -72,10 +85,11 @@ function PageRecommendation({nickName}) {
                             {nickName}님은 이런 게임을 좋아할 거에요.
                         </div>
                         <div className="recommendation-game">
-                            {myGameList.map((url, index) => {
+                            {contentBasedGameList.map((url, index) => {
+                                console.log(`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`)
                                 return (
                                     <div className={"game-item"}>
-                                        <img className={"game-image"} src={url}/>
+                                        <img className={"game-image"} src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}

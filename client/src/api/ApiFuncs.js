@@ -14,6 +14,13 @@ const getBaseGames = async () => {
     return baseGameList.data;
 }
 
+const getContentBasedRecommendation = async (baseGameList) => {
+    const contentBasegRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/`, {
+        steam_game_name: baseGameList,
+    });
+    return contentBasegRecommendationList.data;
+}
+
 // const getNftListByApi = async (ownerAddress, contractAddress) => {
 //     const nftList = await axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts/metadata?ownerAddress=${ownerAddress}&contractAddress=${contractAddress}`
 //         , {withCredentials: true});
@@ -66,5 +73,6 @@ const getBaseGames = async () => {
 
 export {
     createUser,
-    getBaseGames
+    getBaseGames,
+    getContentBasedRecommendation
 }

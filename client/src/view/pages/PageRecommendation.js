@@ -2,9 +2,9 @@ import React from 'react';
 import {useState, useEffect, useMemo, useCallback} from "react";
 import LoadingIcon from "../component/LoadingIcon";
 import "./PageRecommendation.scss";
-import { getContentBasedRecommendation } from '../../api/ApiFuncs';
+import {getContentBasedRecommendation} from '../../api/ApiFuncs';
 
-function PageRecommendation({nickName}) {
+function PageRecommendation({nickName, selectedBaseGames}) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -29,17 +29,66 @@ function PageRecommendation({nickName}) {
         ])
     }, [])
 
+    const exampleGameList = useMemo(() => {
+        return {
+            "result": [
+                {
+                    "id": 582010,
+                    "app_id": 582010,
+                    "game_name": "Monster Hunter: World"
+                },
+                {
+                    "id": 1085660,
+                    "app_id": 1085660,
+                    "game_name": "Destiny 2"
+                },
+                {
+                    "id": 1277920,
+                    "app_id": 1277920,
+                    "game_name": "Ethyrial: Echoes of Yore"
+                },
+                {
+                    "id": 1135120,
+                    "app_id": 1135120,
+                    "game_name": "Tomscape"
+                },
+                {
+                    "id": 1097960,
+                    "app_id": 1097960,
+                    "game_name": "ClickRaid2"
+                },
+                {
+                    "id": 1265850,
+                    "app_id": 1265850,
+                    "game_name": "Chatventures"
+                },
+                {
+                    "id": 974520,
+                    "app_id": 974520,
+                    "game_name": "Ultimo Reino"
+                },
+                {
+                    "id": 1135120,
+                    "app_id": 1135120,
+                    "game_name": "Tomscape"
+                }
+            ]
+        };
+    }, [])
+
     const [contentBasedGameList, setContentBasedGameList] = useState([]);
 
     const getContentBasedRecommendationByServer = useCallback(async (baseGameList) => {
-        const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
-        setContentBasedGameList(contentBasedGamesResult.result);
-        return contentBasedGamesResult.result;
-    },[]);
+        // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
+        // setContentBasedGameList(contentBasedGamesResult.result);
+        // return contentBasedGamesResult.result;
+        setContentBasedGameList(exampleGameList.result);
+        return 0;
+    }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         getContentBasedRecommendationByServer(["Palworld", "League of Legends"]);
-    },[]);
+    }, []);
 
     return (
         <div id={"PageRecommendation"}>
@@ -57,10 +106,10 @@ function PageRecommendation({nickName}) {
                             {nickName}님의 게임 리스트
                         </div>
                         <div className="recommendation-game">
-                            {myGameList.map((url, index) => {
+                            {selectedBaseGames.map((url, index) => {
                                 return (
                                     <div className={"game-item"}>
-                                        <img className={"game-image"} src={url}/>
+                                        <img className={"game-image"} src={url.image_url}/>
                                     </div>
                                 );
                             })}
@@ -86,10 +135,10 @@ function PageRecommendation({nickName}) {
                         </div>
                         <div className="recommendation-game">
                             {contentBasedGameList.map((url, index) => {
-                                console.log(`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`)
                                 return (
                                     <div className={"game-item"}>
-                                        <img className={"game-image"} src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
+                                        <img className={"game-image"}
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}

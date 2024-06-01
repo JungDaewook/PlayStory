@@ -48,12 +48,13 @@ function PageInputInformation({
     const nonCompleteStyle = {backgroundColor: "#AAB6CA"};
 
     const onClickDoneButton = useCallback(async () => {
-        if (isInputComplete) {
-            const gender = inputSex == "남성" ? 'M' : 'F'
-            const userInformationResponse = await createUser(Number(inputAge), gender, inputNickName);
-            setUserInformation(userInformationResponse);
-            setPageNum(2);
-        }
+        // if (isInputComplete) {
+        //     const gender = inputSex == "남성" ? 'M' : 'F'
+        //     const userInformationResponse = await createUser(Number(inputAge), gender, inputNickName);
+        //     setUserInformation(userInformationResponse);
+        //     setPageNum(2);
+        // }
+        setPageNum(2);
     }, [isInputComplete, inputAge, inputSex, inputNickName]);
 
     return (

@@ -5,44 +5,212 @@ import likeIcon from "../assets/LikeIcon.png";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import {getBaseGames} from "../../api/ApiFuncs";
 
-function PageGameSelect({setPageNum, nickName}) {
+function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBaseGames}) {
 
     const imageUrlList = useMemo(() => {
         return ([
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            {
+                "id": 1,
+                "name": "League of Legends",
+                "genres": [
+                    "AOS"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 2,
+                "name": "FIFA Online",
+                "genres": [
+                    "Sports"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 3,
+                "name": "Battle Ground",
+                "genres": [
+                    "FPS",
+                    "Survival"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 4,
+                "name": "Sudden Attack",
+                "genres": [
+                    "FPS"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 5,
+                "name": "OverWatch 2",
+                "genres": [
+                    "FPS"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 6,
+                "name": "Valorant",
+                "genres": [
+                    "FPS",
+                    "Action"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 7,
+                "name": "Lostark",
+                "genres": [
+                    "MMORPG"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 8,
+                "name": "Maple Story",
+                "genres": [
+                    "MMORPG"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 9,
+                "name": "StarCraft Remaster",
+                "genres": [
+                    "AOS"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 10,
+                "name": "DUNGEON & FIGHTER",
+                "genres": [
+                    "RPG",
+                    "Massively Multiplayer",
+                    "Action"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 11,
+                "name": "Palworld",
+                "genres": [
+                    "Open world",
+                    "Massively Multiplayer",
+                    "TPS",
+                    "RPG"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 12,
+                "name": "Helidiver2",
+                "genres": [
+                    "Open world",
+                    "Massively Multiplayer",
+                    "TPS",
+                    "Indie"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 13,
+                "name": "TEKKEN 8",
+                "genres": [
+                    "Action",
+                    "Massively Multiplayer"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 14,
+                "name": "Dota 2",
+                "genres": [
+                    "Action",
+                    "Sports",
+                    "Strategy"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 15,
+                "name": "GTA 5",
+                "genres": [
+                    "Action",
+                    "Massively Multiplayer",
+                    "Open world",
+                    "TPS",
+                    "Adventure",
+                    "Racing"
+                ],
+                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+            },
+            {
+                "id": 16,
+                "name": "Destiny 2",
+                "genres": [
+                    "Open world",
+                    "Massively Multiplayer",
+                    "MMORPG",
+                    "FPS"
+                ],
+                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1715101527"
+            },
+            {
+                "id": 17,
+                "name": "Stardew Valley ",
+                "genres": [
+                    "RPG",
+                    "Indie",
+                    "Simulation"
+                ],
+                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg?t=1711128146"
+            },
+            {
+                "id": 18,
+                "name": "Dead by Daylight",
+                "genres": [
+                    "Horrow",
+                    "Survival",
+                    "TPS",
+                    "Action"
+                ],
+                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/381210/header.jpg?t=1712842368"
+            },
+            {
+                "id": 20,
+                "name": "Monster Hunter: World\n",
+                "genres": [
+                    "Action",
+                    "RPG",
+                    "Open world",
+                    "TPS",
+                    "Adventure"
+                ],
+                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/582010/header.jpg?t=1711328912"
+            },
+            {
+                "id": 21,
+                "name": "Counter-Strike 2 ",
+                "genres": [
+                    "FPS",
+                    "Action"
+                ],
+                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg?t=1698860631"
+            }
         ]);
     }, []);
 
-    const baseGames = useMemo(async () => {
-        const baseGamesList = await getBaseGames();
-        return baseGamesList
-    }, [])
-
-    useEffect(() => {
-        console.log(baseGames);
-    }, [baseGames]);
+    // const baseGames = useMemo(async () => {
+    //     const baseGamesList = await getBaseGames();
+    //     return baseGamesList
+    // }, [])
+    //
+    // useEffect(() => {
+    //     console.log(baseGames);
+    // }, [baseGames]);
 
 
     const [selectedItems, setSelectedItems] = useState(Array(imageUrlList.length).fill(false))
@@ -61,7 +229,6 @@ function PageGameSelect({setPageNum, nickName}) {
             const newState = [...prevState];
             newState[index] = !newState[index];
             return newState;
-
         });
     }, []);
 
@@ -75,6 +242,15 @@ function PageGameSelect({setPageNum, nickName}) {
         if (selectedItemCount >= 3) setIsSelectedEnough(true);
         else setIsSelectedEnough(false);
     }, [selectedItemCount]);
+
+    const selectedGameNames = useMemo(() => {
+        return imageUrlList.filter((_, index) => selectedItems[index]);
+    }, [selectedItems, imageUrlList])
+
+    useEffect(() => {
+        setSelectedBaseGames(selectedGameNames);
+    }, [selectedGameNames]);
+
 
     return (
         <div id={"PageGameSelect"}>
@@ -94,7 +270,7 @@ function PageGameSelect({setPageNum, nickName}) {
                     {imageUrlList.map((url, index) => {
                         return (
                             <div key={index} className={"game-item"} onClick={() => handleItemClick(index)}>
-                                <img className={"game-image"} src={url}
+                                <img className={"game-image"} src={url.image_url}
                                      style={selectedItems[index] ? selectedStyle : {}}/>
                                 {selectedItems[index] && <img src={likeIcon} className={"image-selected"}/>}
                             </div>

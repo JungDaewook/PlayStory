@@ -12,12 +12,17 @@ function PageWrapper(props) {
     const [nickName, setNickName] = useState("");
     const [sex, setSex] = useState(0);
     const [age, setAge] = useState(0);
+    const [selectedBaseGames, setSelectedBaseGames] = useState([]);
 
     const [userInformation, setUserInformation] = useState({});
-    
+
     // useEffect(() => {
     //     console.log(nickName, sex, age);
     // }, [nickName, sex, age]);
+
+    useEffect(() => {
+        console.log(selectedBaseGames);
+    }, [selectedBaseGames])
 
     const renderedPage = useMemo(() => {
         switch (pageNum) {
@@ -29,9 +34,10 @@ function PageWrapper(props) {
                                              userInformation={userInformation}
                                              setUserInformation={setUserInformation}/>;
             case 2:
-                return <PageGameSelect setPageNum={setPageNum} nickName={nickName}/>;
+                return <PageGameSelect setPageNum={setPageNum} nickName={nickName} selectedBaseGames={selectedBaseGames}
+                                       setSelectedBaseGames={setSelectedBaseGames}/>;
             case 3:
-                return <PageRecommendation nickName={nickName}/>
+                return <PageRecommendation nickName={nickName} selectedBaseGames={selectedBaseGames}/>
             default:
                 return <PageStart pageNum={pageNum}/>;
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect, useMemo, useCallback} from "react";
 import LoadingIcon from "../component/LoadingIcon";
 import "./PageRecommendation.scss";
-import {getContentBasedRecommendation} from '../../api/ApiFuncs';
+import {getContentBasedRecommendation, getCollaborativeBasedRecommendation} from '../../api/ApiFuncs';
 
 function PageRecommendation({nickName, selectedBaseGames}) {
     const [isLoading, setIsLoading] = useState(true);
@@ -15,14 +15,14 @@ function PageRecommendation({nickName, selectedBaseGames}) {
 
     const myGameList = useMemo(() => {
         return ([
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
-            "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
+            "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg",
             // "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
             // "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg",
             // "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
@@ -77,6 +77,7 @@ function PageRecommendation({nickName, selectedBaseGames}) {
     }, [])
 
     const [contentBasedGameList, setContentBasedGameList] = useState([]);
+    const [collaborativeGameList, setCollaborativeGameList] = useState([]);
 
     const getContentBasedRecommendationByServer = useCallback(async (baseGameList) => {
         // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
@@ -86,8 +87,17 @@ function PageRecommendation({nickName, selectedBaseGames}) {
         return 0;
     }, []);
 
+    const getCollaborativeRecommendationByServer = useCallback(async (baseGameList) => {
+        // const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameList);
+        // setCollaborativeGameList(collaborativeGamesResult.result);
+        // return collaborativeGamesResult.result;
+        setContentBasedGameList(exampleGameList.result);
+        return 0;
+    }, [])
+
     useEffect(() => {
         getContentBasedRecommendationByServer(["Palworld", "League of Legends"]);
+        getCollaborativeRecommendationByServer([10, 20]);
     }, []);
 
     return (
@@ -120,10 +130,11 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {nickName}과 비슷한 사람들은 이런 게임을 선호했어요.
                         </div>
                         <div className="recommendation-game">
-                            {myGameList.map((url, index) => {
+                            {collaborativeGameList.map((url, index) => {
                                 return (
                                     <div className={"game-item"}>
-                                        <img className={"game-image"} src={url}/>
+                                        <img className={"game-image"}
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}

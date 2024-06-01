@@ -15,10 +15,17 @@ const getBaseGames = async () => {
 }
 
 const getContentBasedRecommendation = async (baseGameList) => {
-    const contentBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/`, {
+    const contentBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/content-based`, {
         steam_game_name: baseGameList,
     });
     return contentBasedRecommendationList.data;
+}
+
+const getCollaborativeBasedRecommendation = async (baseGameList) => {
+    const collaborativeBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/collaborative`, {
+        game_id_list: baseGameList,
+    })
+    return collaborativeBasedRecommendationList.data;
 }
 
 // const getNftListByApi = async (ownerAddress, contractAddress) => {
@@ -74,5 +81,6 @@ const getContentBasedRecommendation = async (baseGameList) => {
 export {
     createUser,
     getBaseGames,
-    getContentBasedRecommendation
+    getContentBasedRecommendation,
+    getCollaborativeBasedRecommendation
 }

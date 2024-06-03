@@ -267,10 +267,10 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     </div>
                 </div>
                 <div className={"game-wrapper"}>
-                    {imageUrlList.map((url, index) => {
+                    {imageUrlList.map((game, index) => {
                         return (
                             <div key={index} className={"game-item"} onClick={() => handleItemClick(index)}>
-                                <img className={"game-image"} src={url.image_url}
+                                <img className={"game-image"} src={game.image_url}
                                      style={selectedItems[index] ? selectedStyle : {}}/>
                                 {selectedItems[index] && <img src={likeIcon} className={"image-selected"}/>}
                             </div>

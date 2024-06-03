@@ -2,7 +2,13 @@ import React from 'react';
 import {useState, useEffect, useMemo, useCallback} from "react";
 import LoadingIcon from "../component/LoadingIcon";
 import "./PageRecommendation.scss";
-import {getContentBasedRecommendation, getCollaborativeBasedRecommendation} from '../../api/ApiFuncs';
+import {
+    getContentBasedRecommendation,
+    getCollaborativeBasedRecommendation,
+    getRandomRecommendation,
+    clickLike,
+    clickGame
+} from '../../api/ApiFuncs';
 import Modal from "../component/Modal";
 
 function PageRecommendation({nickName, selectedBaseGames}) {
@@ -113,26 +119,42 @@ function PageRecommendation({nickName, selectedBaseGames}) {
     }, [])
 
 
-    const getContentBasedRecommendationByServer = useCallback(async (baseGameList) => {
-        // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
+    const getContentBasedRecommendationByServer = useCallback(async (baseGameNameList) => {
+        // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameNameList);
         // setContentBasedGameList(contentBasedGamesResult.result);
         // return contentBasedGamesResult.result;
         setContentBasedGameList(exampleGameList.result);
         return 0;
     }, []);
 
-    const getCollaborativeRecommendationByServer = useCallback(async (baseGameList) => {
-        // const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameList);
+    const getCollaborativeRecommendationByServer = useCallback(async (baseGameIdList) => {
+        // const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameIdList);
         // setCollaborativeGameList(collaborativeGamesResult.result);
         // return collaborativeGamesResult.result;
         setCollaborativeGameList(exampleGameList.result);
         return 0;
     }, [])
 
+    const getRandomRecommendationByServer = useCallback(async () => {
+        // const randomGamesResult = await getRandomRecommendation();
+        // setRandomGameList(randomGamesResult.result);
+        // return randomGamesResult.result;
+        setCollaborativeGameList(exampleGameList.result);
+        return 0;
+    })
+
     useEffect(() => {
-        getContentBasedRecommendationByServer(["Palworld", "League of Legends"]);
-        getCollaborativeRecommendationByServer([10, 20]);
-    }, []);
+        const selectedBaseGameNames = selectedBaseGames.map((game, index) => {
+            return game.name;
+        })
+        const selectedBaseGameIds = selectedBaseGames.map((game, index) => {
+            return game.id;
+        })
+        getContentBasedRecommendationByServer(selectedBaseGameNames);
+        getCollaborativeRecommendationByServer(selectedBaseGameIds);
+        getRandomRecommendationByServer();
+    }, [selectedBaseGames]);
+
 
     const [clickedGame, setClickedGame] = useState(0);
     const [clickedGameName, setClickedGameName] = useState('');

@@ -14,73 +14,37 @@ const getBaseGames = async () => {
     return baseGameList.data;
 }
 
-const getContentBasedRecommendation = async (baseGameList) => {
+const getContentBasedRecommendation = async (baseGameNameList) => {
     const contentBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/content-based/`, {
-        steam_game_name: baseGameList,
+        steam_game_name: baseGameNameList,
     });
     return contentBasedRecommendationList.data;
 }
 
-const getCollaborativeBasedRecommendation = async (baseGameList) => {
+const getCollaborativeBasedRecommendation = async (baseGameIdList) => {
     const collaborativeBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/collaborative/`, {
-        game_id_list: baseGameList,
+        game_id_list: baseGameIdList,
     })
     return collaborativeBasedRecommendationList.data;
 }
 
-// const getNftListByApi = async (ownerAddress, contractAddress) => {
-//     const nftList = await axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts/metadata?ownerAddress=${ownerAddress}&contractAddress=${contractAddress}`
-//         , {withCredentials: true});
-//     return nftList.data;
-// }
-//
-// const postCanvasToDatabase = async (imageUri, nftName, ownerAddress, contractAddress) => {
-//     const postNftToServer = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts`, {
-//         imageUri: imageUri,
-//         nftName: nftName,
-//         ownerAddress: ownerAddress,
-//         contractAddress: contractAddress
-//     }, {withCredentials: true});
-//     return postNftToServer;
-// }
-//
-// const writeObjectToServer = async (object, fileName) => {
-//     await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts/metadata`, {
-//         stringifyObject: JSON.stringify(object),
-//         fileName: fileName
-//     }, {withCredentials: true})
-//     return;
-// }
-//
-// const putImageUriToDatabase = async (nftId, imageUri) => {
-//     const updatingNft = await axios.put(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts`, {
-//         nftId: nftId,
-//         imageUri: imageUri
-//     }, {withCredentials: true})
-//     return updatingNft.data;
-// }
-//
-// const getNftListByApi = async (ownerAddress, contractAddress) => {
-//     const nftList = await axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts/metadata?ownerAddress=${ownerAddress}&contractAddress=${contractAddress}`
-//         , {withCredentials: true});
-//     return nftList.data;
-// }
-//
-// const deleteNftFromDatabase = async (nftId) => {
-//     await axios.delete(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts/${nftId}`
-//         , {withCredentials: true});
-//     return;
-// }
-//
-// const deleteFileFromDirectory = async (fileName) => {
-//     await axios.delete(`${process.env.REACT_APP_SERVER_DOMAIN}/api/v1/nfts?fileName=${fileName}`
-//         , {withCredentials: true});
-//     return;
-// }
+const getRandomRecommendation = async () => {
+    const randomRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/api/recommend/random/`, {});
+    return randomRecommendationList.data;
+}
+
+const clickLike = async () => {
+}
+
+const clickGame = async () => {
+}
 
 export {
     createUser,
     getBaseGames,
     getContentBasedRecommendation,
-    getCollaborativeBasedRecommendation
+    getCollaborativeBasedRecommendation,
+    getRandomRecommendation,
+    clickLike,
+    clickGame
 }

@@ -62,18 +62,27 @@
         width: 30px;
         height: 30px;
         color: #0351FF;
-        animation: likeEffect 0.2s ease;
+        animation: likeEffect 0.3s ease, colorTransition 1.5s ease;
       }
 
       @keyframes likeEffect {
         0% {
-          transform: scale(1);
+          transform: scale(1) rotate(0deg);
         }
         50% {
-          transform: scale(1.3);
+          transform: scale(1.3) rotate(-20deg);
         }
         100% {
-          transform: scale(1);
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes colorTransition {
+        0% {
+          color: gold;
+        }
+        100% {
+          color: #0351FF;
         }
       }
     }

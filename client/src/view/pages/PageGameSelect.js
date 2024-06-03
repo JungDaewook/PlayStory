@@ -15,7 +15,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "AOS"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 2,
@@ -23,7 +23,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "Sports"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 3,
@@ -32,7 +32,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "FPS",
                     "Survival"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 4,
@@ -40,7 +40,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "FPS"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 5,
@@ -48,7 +48,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "FPS"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 6,
@@ -57,7 +57,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "FPS",
                     "Action"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 7,
@@ -65,7 +65,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "MMORPG"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 8,
@@ -73,7 +73,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "MMORPG"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 9,
@@ -81,7 +81,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                 "genres": [
                     "AOS"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 10,
@@ -91,7 +91,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "Massively Multiplayer",
                     "Action"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 11,
@@ -102,7 +102,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "TPS",
                     "RPG"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 12,
@@ -113,7 +113,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "TPS",
                     "Indie"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 13,
@@ -122,7 +122,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "Action",
                     "Massively Multiplayer"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 14,
@@ -132,7 +132,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "Sports",
                     "Strategy"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 15,
@@ -145,7 +145,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     "Adventure",
                     "Racing"
                 ],
-                "image_url": "http://media.steampowered.com/steamcommunity/public/images/apps/440/07385eb55b5ba974aebbe74d3c99626bda7920b8.jpg"
+                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
             },
             {
                 "id": 16,

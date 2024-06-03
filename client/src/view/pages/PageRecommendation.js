@@ -3,15 +3,21 @@ import {useState, useEffect, useMemo, useCallback} from "react";
 import LoadingIcon from "../component/LoadingIcon";
 import "./PageRecommendation.scss";
 import {getContentBasedRecommendation, getCollaborativeBasedRecommendation} from '../../api/ApiFuncs';
+import Modal from "../component/Modal";
 
 function PageRecommendation({nickName, selectedBaseGames}) {
     const [isLoading, setIsLoading] = useState(true);
 
+    const [contentBasedGameList, setContentBasedGameList] = useState([]);
+    const [collaborativeGameList, setCollaborativeGameList] = useState([]);
+    const [randomGameList, setRandomGameList] = useState([]);
+
     useEffect(() => {
+        // if (contentBasedGameList.length && collaborativeGameList.length && randomGameList.length)
         setTimeout(() => {
             setIsLoading(false)
         }, 3000);
-    }, [])
+    }, [contentBasedGameList, collaborativeGameList, randomGameList])
 
     const myGameList = useMemo(() => {
         return ([
@@ -33,51 +39,79 @@ function PageRecommendation({nickName, selectedBaseGames}) {
         return {
             "result": [
                 {
-                    "id": 582010,
-                    "app_id": 582010,
-                    "game_name": "Monster Hunter: World"
+                    "id": 413740,
+                    "app_id": 413740,
+                    "game_name": "Mines of Mars",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1085660,
-                    "app_id": 1085660,
-                    "game_name": "Destiny 2"
+                    "id": 312610,
+                    "app_id": 312610,
+                    "game_name": "METAL SLUG X",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1277920,
-                    "app_id": 1277920,
-                    "game_name": "Ethyrial: Echoes of Yore"
+                    "id": 6060,
+                    "app_id": 6060,
+                    "game_name": "Star Wars: Battlefront 2 (Classic; 2005)",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1135120,
-                    "app_id": 1135120,
-                    "game_name": "Tomscape"
+                    "id": 8930,
+                    "app_id": 8930,
+                    "game_name": "Sid Meier's Civilization® V",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1097960,
-                    "app_id": 1097960,
-                    "game_name": "ClickRaid2"
+                    "id": 380,
+                    "app_id": 380,
+                    "game_name": "Half-Life 2: Episode One",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1265850,
-                    "app_id": 1265850,
-                    "game_name": "Chatventures"
+                    "id": 55230,
+                    "app_id": 55230,
+                    "game_name": "Saints Row: The Third",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 974520,
-                    "app_id": 974520,
-                    "game_name": "Ultimo Reino"
+                    "id": 221640,
+                    "app_id": 221640,
+                    "game_name": "Super Hexagon",
+                    "likes": 0,
+                    "clicks": 0
                 },
                 {
-                    "id": 1135120,
-                    "app_id": 1135120,
-                    "game_name": "Tomscape"
+                    "id": 550,
+                    "app_id": 550,
+                    "game_name": "Left 4 Dead 2",
+                    "likes": 0,
+                    "clicks": 0
+                },
+                {
+                    "id": 368990,
+                    "app_id": 368990,
+                    "game_name": "Despair",
+                    "likes": 0,
+                    "clicks": 0
+                },
+                {
+                    "id": 368500,
+                    "app_id": 368500,
+                    "game_name": "Assassin's Creed® Syndicate",
+                    "likes": 0,
+                    "clicks": 0
                 }
             ]
         };
     }, [])
 
-    const [contentBasedGameList, setContentBasedGameList] = useState([]);
-    const [collaborativeGameList, setCollaborativeGameList] = useState([]);
 
     const getContentBasedRecommendationByServer = useCallback(async (baseGameList) => {
         // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameList);
@@ -91,7 +125,7 @@ function PageRecommendation({nickName, selectedBaseGames}) {
         // const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameList);
         // setCollaborativeGameList(collaborativeGamesResult.result);
         // return collaborativeGamesResult.result;
-        setContentBasedGameList(exampleGameList.result);
+        setCollaborativeGameList(exampleGameList.result);
         return 0;
     }, [])
 
@@ -99,6 +133,22 @@ function PageRecommendation({nickName, selectedBaseGames}) {
         getContentBasedRecommendationByServer(["Palworld", "League of Legends"]);
         getCollaborativeRecommendationByServer([10, 20]);
     }, []);
+
+    const [clickedGame, setClickedGame] = useState(0);
+    const [clickedGameName, setClickedGameName] = useState('');
+    const [clickedGameImageUrl, setClickedGameImageUrl] = useState('');
+    const [clickedGameDescription, setClickedGameDescription] = useState('이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다');
+
+    const handleGameClick = (game, gameName, gameImageUrl, gameDescription) => {
+        setClickedGame(game)
+        setClickedGameName(gameName);
+        setClickedGameImageUrl(gameImageUrl);
+        setClickedGameDescription(gameDescription);
+    };
+
+    const closeModal = () => {
+        setClickedGame(0);
+    };
 
     return (
         <div id={"PageRecommendation"}>
@@ -116,10 +166,10 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {nickName}님의 게임 리스트
                         </div>
                         <div className="recommendation-game">
-                            {selectedBaseGames.map((url, index) => {
+                            {selectedBaseGames.map((game, index) => {
                                 return (
-                                    <div className={"game-item"}>
-                                        <img className={"game-image"} src={url.image_url}/>
+                                    <div className={"game-item-my-game"}>
+                                        <img className={"game-image"} src={game.image_url}/>
                                     </div>
                                 );
                             })}
@@ -130,11 +180,12 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {nickName}과 비슷한 사람들은 이런 게임을 선호했어요.
                         </div>
                         <div className="recommendation-game">
-                            {collaborativeGameList.map((url, index) => {
+                            {collaborativeGameList.map((game, index) => {
                                 return (
-                                    <div className={"game-item"}>
+                                    <div className={"game-item"}
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
                                         <img className={"game-image"}
-                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}
@@ -145,11 +196,12 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {nickName}님은 이런 게임을 좋아할 거에요.
                         </div>
                         <div className="recommendation-game">
-                            {contentBasedGameList.map((url, index) => {
+                            {contentBasedGameList.map((game, index) => {
                                 return (
-                                    <div className={"game-item"}>
+                                    <div className={"game-item"}
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
                                         <img className={"game-image"}
-                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${url.id}/header.jpg`}/>
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}
@@ -160,16 +212,21 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             마음에 든 게임이 없으셨다면, 이런 게임도 있어요.
                         </div>
                         <div className="recommendation-game">
-                            {myGameList.map((url, index) => {
+                            {contentBasedGameList.map((game, index) => {
                                 return (
-                                    <div className={"game-item"}>
-                                        <img className={"game-image"} src={url}/>
+                                    <div className={"game-item"}
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
+                                        <img className={"game-image"}
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
                                     </div>
                                 );
                             })}
                         </div>
                     </div>
                     <div className={"empty-area"}></div>
+                    {clickedGame ? <Modal game={clickedGame} imageUrl={clickedGameImageUrl} gameName={clickedGameName}
+                                          gameDescription={clickedGameDescription}
+                                          onClose={closeModal}/> : <></>}
                 </div>}
         </div>
     );

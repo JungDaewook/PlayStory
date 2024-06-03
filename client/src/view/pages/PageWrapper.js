@@ -19,11 +19,7 @@ function PageWrapper(props) {
     // useEffect(() => {
     //     console.log(nickName, sex, age);
     // }, [nickName, sex, age]);
-
-    useEffect(() => {
-        console.log(selectedBaseGames);
-    }, [selectedBaseGames])
-
+    
     const renderedPage = useMemo(() => {
         switch (pageNum) {
             case 0:

@@ -19,10 +19,10 @@ function PageRecommendation({nickName, selectedBaseGames}) {
     const [randomGameList, setRandomGameList] = useState([]);
 
     useEffect(() => {
-        // if (contentBasedGameList.length && collaborativeGameList.length && randomGameList.length)
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 3000);
+        if (contentBasedGameList.length && collaborativeGameList.length && randomGameList.length)
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 3000);
     }, [contentBasedGameList, collaborativeGameList, randomGameList])
 
     const myGameList = useMemo(() => {

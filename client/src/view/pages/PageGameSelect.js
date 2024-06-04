@@ -160,7 +160,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
     const handleItemClick = useCallback((index) => {
         setSelectedItems(prevState => {
             const newState = [...prevState];
-            newState[index] = !newState[index];
+            newState[19 - index] = !newState[19 - index];
             return newState;
         });
     }, []);
@@ -201,12 +201,12 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     </div>
                 </div>
                 <div className={"game-wrapper"}>
-                    {baseGameList.map((game, index) => {
+                    {baseGameList.slice().reverse().map((game, index) => {
                         return (
                             <div key={index} className={"game-item"} onClick={() => handleItemClick(index)}>
                                 <img className={"game-image"} src={game.image_url}
-                                     style={selectedItems[index] ? selectedStyle : {}}/>
-                                {selectedItems[index] && <img src={likeIcon} className={"image-selected"}/>}
+                                     style={selectedItems[19 - index] ? selectedStyle : {}}/>
+                                {selectedItems[19 - index] && <img src={likeIcon} className={"image-selected"}/>}
                             </div>
                         );
                     })}

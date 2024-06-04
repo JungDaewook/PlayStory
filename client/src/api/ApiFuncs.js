@@ -23,7 +23,7 @@ const getContentBasedRecommendation = async (baseGameNameList) => {
 
 const getCollaborativeBasedRecommendation = async (baseGameIdList) => {
     const collaborativeBasedRecommendationList = await axios.post(`${process.env.REACT_APP_SERVER_DOMAIN}/recommend/collaborative/`, {
-        game_id_list: baseGameIdList,
+        steam_game_name: baseGameIdList,
     })
     return collaborativeBasedRecommendationList.data;
 }

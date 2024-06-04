@@ -120,27 +120,27 @@ function PageRecommendation({nickName, selectedBaseGames}) {
 
 
     const getContentBasedRecommendationByServer = useCallback(async (baseGameNameList) => {
-        // const contentBasedGamesResult = await getContentBasedRecommendation(baseGameNameList);
-        // setContentBasedGameList(contentBasedGamesResult.result);
-        // return contentBasedGamesResult.result;
-        setContentBasedGameList(exampleGameList.result);
-        return 0;
+        const contentBasedGamesResult = await getContentBasedRecommendation(baseGameNameList);
+        setContentBasedGameList(contentBasedGamesResult.result);
+        return contentBasedGamesResult.result;
+        // setContentBasedGameList(exampleGameList.result);
+        // return 0;
     }, []);
 
     const getCollaborativeRecommendationByServer = useCallback(async (baseGameIdList) => {
-        // const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameIdList);
-        // setCollaborativeGameList(collaborativeGamesResult.result);
-        // return collaborativeGamesResult.result;
-        setCollaborativeGameList(exampleGameList.result);
-        return 0;
+        const collaborativeGamesResult = await getCollaborativeBasedRecommendation(baseGameIdList);
+        setCollaborativeGameList(collaborativeGamesResult.result);
+        return collaborativeGamesResult.result;
+        // setCollaborativeGameList(exampleGameList.result);
+        // return 0;
     }, [])
 
     const getRandomRecommendationByServer = useCallback(async () => {
-        // const randomGamesResult = await getRandomRecommendation();
-        // setRandomGameList(randomGamesResult.result);
-        // return randomGamesResult.result;
-        setCollaborativeGameList(exampleGameList.result);
-        return 0;
+        const randomGamesResult = await getRandomRecommendation();
+        setRandomGameList(randomGamesResult.result);
+        return randomGamesResult.result;
+        // setRandomGameList(exampleGameList.result);
+        // return 0;
     })
 
     useEffect(() => {
@@ -151,7 +151,7 @@ function PageRecommendation({nickName, selectedBaseGames}) {
             return game.id;
         })
         getContentBasedRecommendationByServer(selectedBaseGameNames);
-        getCollaborativeRecommendationByServer(selectedBaseGameIds);
+        getCollaborativeRecommendationByServer(selectedBaseGameNames);
         getRandomRecommendationByServer();
     }, [selectedBaseGames]);
 
@@ -159,7 +159,7 @@ function PageRecommendation({nickName, selectedBaseGames}) {
     const [clickedGame, setClickedGame] = useState(0);
     const [clickedGameName, setClickedGameName] = useState('');
     const [clickedGameImageUrl, setClickedGameImageUrl] = useState('');
-    const [clickedGameDescription, setClickedGameDescription] = useState('이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다');
+    const [clickedGameDescription, setClickedGameDescription] = useState('');
 
     const handleGameClick = (game, gameName, gameImageUrl, gameDescription) => {
         setClickedGame(game)
@@ -171,6 +171,10 @@ function PageRecommendation({nickName, selectedBaseGames}) {
     const closeModal = () => {
         setClickedGame(0);
     };
+
+    const replaceDescription = useCallback((description) => {
+        return description.replace(/;/g, '\n');
+    }, []);
 
     return (
         <div id={"PageRecommendation"}>
@@ -205,9 +209,9 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {collaborativeGameList.map((game, index) => {
                                 return (
                                     <div className={"game-item"}
-                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`, replaceDescription(game.description))}>
                                         <img className={"game-image"}
-                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`}/>
                                     </div>
                                 );
                             })}
@@ -221,9 +225,9 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             {contentBasedGameList.map((game, index) => {
                                 return (
                                     <div className={"game-item"}
-                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`, replaceDescription(game.description))}>
                                         <img className={"game-image"}
-                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`}/>
                                     </div>
                                 );
                             })}
@@ -234,12 +238,12 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                             마음에 든 게임이 없으셨다면, 이런 게임도 있어요.
                         </div>
                         <div className="recommendation-game">
-                            {contentBasedGameList.map((game, index) => {
+                            {randomGameList.map((game, index) => {
                                 return (
                                     <div className={"game-item"}
-                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`, '이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다 이 게임은 참 재밌습니다')}>
+                                         onClick={() => handleGameClick(game, game.game_name, `https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`, replaceDescription(game.description))}>
                                         <img className={"game-image"}
-                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.id}/header.jpg`}/>
+                                             src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.app_id}/header.jpg`}/>
                                     </div>
                                 );
                             })}

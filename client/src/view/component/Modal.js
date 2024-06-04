@@ -2,18 +2,28 @@ import React, {useCallback, useState} from 'react';
 import './Modal.scss';
 import likeIcon from "../assets/LikeIcon.png";
 import {AiFillLike, AiOutlineClose, AiOutlineLike} from "react-icons/ai";
+import {clickGame, clickLike} from "../../api/ApiFuncs";
 
 const Modal = ({game, imageUrl, gameName, gameDescription, onClose}) => {
     const [liked, setLiked] = useState(false);
 
-    const onClickLikeButton = useCallback(() => {
+    const clickGameByServer = useCallback(async (gameId) => {
+        await clickGame(gameId);
+    }, []);
+
+    const clickLikeByServer = useCallback(async (gameId) => {
+        await clickLike(gameId);
+    }, []);
+
+    const onClickLikeButton = useCallback((gameId) => {
         setLiked(true);
-        //like했을 때 api 추가
+        clickLikeByServer(gameId)
+        return;
     }, [])
 
-    const onClickGameHeader = useCallback(() => {
-        //click 했을 때 api 추가
-        window.open(`https://store.steampowered.com/app/${game.id}/${gameName}/`, '_blank');
+    const onClickGameHeader = useCallback((gameId) => {
+        clickGameByServer(gameId)
+        window.open(`https://store.steampowered.com/app/${game.app_id}/${gameName}/`, '_blank');
         return;
     }, [])
 
@@ -24,11 +34,11 @@ const Modal = ({game, imageUrl, gameName, gameDescription, onClose}) => {
                 <img className="game-image" src={imageUrl}
                      alt={gameName}/>
                 <div className="header-wrapper">
-                    <div className={"modal-game-header"} onClick={onClickGameHeader}>{gameName}</div>
+                    <div className={"modal-game-header"} onClick={() => onClickGameHeader(game.app_id)}>{gameName}</div>
                     {liked ? (
-                        <AiFillLike className={"like-button-liked"} onClick={onClickLikeButton}/>
+                        <AiFillLike className={"like-button-liked"}/>
                     ) : (
-                        <AiOutlineLike className={"like-button"} onClick={onClickLikeButton}/>
+                        <AiOutlineLike className={"like-button"} onClick={() => onClickLikeButton(game.app_id)}/>
                     )}
                 </div>
                 <div className={"divider"}></div>

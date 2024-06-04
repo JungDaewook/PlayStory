@@ -9,211 +9,144 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
 
     const imageUrlList = useMemo(() => {
         return ([
-            {
-                "id": 1,
-                "name": "League of Legends",
-                "genres": [
-                    "AOS"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 2,
-                "name": "FIFA Online",
-                "genres": [
-                    "Sports"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 3,
-                "name": "Battle Ground",
-                "genres": [
-                    "FPS",
-                    "Survival"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 4,
-                "name": "Sudden Attack",
-                "genres": [
-                    "FPS"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 5,
-                "name": "OverWatch 2",
-                "genres": [
-                    "FPS"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 6,
-                "name": "Valorant",
-                "genres": [
-                    "FPS",
-                    "Action"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 7,
-                "name": "Lostark",
-                "genres": [
-                    "MMORPG"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 8,
-                "name": "Maple Story",
-                "genres": [
-                    "MMORPG"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 9,
-                "name": "StarCraft Remaster",
-                "genres": [
-                    "AOS"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 10,
-                "name": "DUNGEON & FIGHTER",
-                "genres": [
-                    "RPG",
-                    "Massively Multiplayer",
-                    "Action"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 11,
-                "name": "Palworld",
-                "genres": [
-                    "Open world",
-                    "Massively Multiplayer",
-                    "TPS",
-                    "RPG"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 12,
-                "name": "Helidiver2",
-                "genres": [
-                    "Open world",
-                    "Massively Multiplayer",
-                    "TPS",
-                    "Indie"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 13,
-                "name": "TEKKEN 8",
-                "genres": [
-                    "Action",
-                    "Massively Multiplayer"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 14,
-                "name": "Dota 2",
-                "genres": [
-                    "Action",
-                    "Sports",
-                    "Strategy"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 15,
-                "name": "GTA 5",
-                "genres": [
-                    "Action",
-                    "Massively Multiplayer",
-                    "Open world",
-                    "TPS",
-                    "Adventure",
-                    "Racing"
-                ],
-                "image_url": "http://steamcdn-a.akamaihd.net/steam/apps/440/header.jpg"
-            },
-            {
-                "id": 16,
-                "name": "Destiny 2",
-                "genres": [
-                    "Open world",
-                    "Massively Multiplayer",
-                    "MMORPG",
-                    "FPS"
-                ],
-                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1715101527"
-            },
-            {
-                "id": 17,
-                "name": "Stardew Valley ",
-                "genres": [
-                    "RPG",
-                    "Indie",
-                    "Simulation"
-                ],
-                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg?t=1711128146"
-            },
-            {
-                "id": 18,
-                "name": "Dead by Daylight",
-                "genres": [
-                    "Horrow",
-                    "Survival",
-                    "TPS",
-                    "Action"
-                ],
-                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/381210/header.jpg?t=1712842368"
-            },
-            {
-                "id": 20,
-                "name": "Monster Hunter: World\n",
-                "genres": [
-                    "Action",
-                    "RPG",
-                    "Open world",
-                    "TPS",
-                    "Adventure"
-                ],
-                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/582010/header.jpg?t=1711328912"
-            },
-            {
-                "id": 21,
-                "name": "Counter-Strike 2 ",
-                "genres": [
-                    "FPS",
-                    "Action"
-                ],
-                "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg?t=1698860631"
-            }
-        ]);
+                {
+                    "id": 1,
+                    "name": "League of Legends",
+                    "genres": ["AOS"],
+                    "image_url": "https://cloudcomputing13213123.s3.ap-northeast-2.amazonaws.com/Lostark.jpeg"
+                },
+                {
+                    "id": 2,
+                    "name": "FIFA Online",
+                    "genres": ["Sports"],
+                    "image_url": "https://cdn.ea.com/fifa/FIFA_Online/header.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "Battle Ground",
+                    "genres": ["FPS", "Survival"],
+                    "image_url": "https://battlegrounds.pubg.com/images/header.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "Sudden Attack",
+                    "genres": ["FPS"],
+                    "image_url": "https://suddenattack.nexon.com/images/header.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "OverWatch 2",
+                    "genres": ["FPS"],
+                    "image_url": "https://images.blz-contentstack.com/v3/assets/blt2477dcaf4ebd440c/bltd7b3b3d556e5b8ef/header.jpg"
+                },
+                {
+                    "id": 6,
+                    "name": "Valorant",
+                    "genres": ["FPS", "Action"],
+                    "image_url": "https://assets.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt3273d1e8e1238454/header.jpg"
+                },
+                {
+                    "id": 7,
+                    "name": "Lostark",
+                    "genres": ["MMORPG"],
+                    "image_url": "https://assets-lostark.pearlcdn.com/images/header.jpg"
+                },
+                {
+                    "id": 8,
+                    "name": "Maple Story",
+                    "genres": ["MMORPG"],
+                    "image_url": "https://maplestory.nexon.com/images/header.jpg"
+                },
+                {
+                    "id": 9,
+                    "name": "StarCraft Remaster",
+                    "genres": ["AOS"],
+                    "image_url": "https://bnetcmsus-a.akamaihd.net/cms/header.jpg"
+                },
+                {
+                    "id": 10,
+                    "name": "DUNGEON & FIGHTER",
+                    "genres": ["RPG", "Massively Multiplayer", "Action"],
+                    "image_url": "https://dungeonfighter.nexon.com/images/header.jpg"
+                },
+                {
+                    "id": 11,
+                    "name": "Palworld",
+                    "genres": ["Open world", "Massively Multiplayer", "TPS", "RPG"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/1623730/header.jpg"
+                },
+                {
+                    "id": 12,
+                    "name": "Helidiver2",
+                    "genres": ["Open world", "Massively Multiplayer", "TPS", "Indie"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/553850/header.jpg"
+                },
+                {
+                    "id": 13,
+                    "name": "Dota 2",
+                    "genres": ["Action", "Sports", "Strategy"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/570/header.jpg"
+                },
+                {
+                    "id": 14,
+                    "name": "GTA 5",
+                    "genres": ["Action", "Massively Multiplayer", "Open world", "TPS", "Adventure", "Racing"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/271590/header.jpg"
+                },
+                {
+                    "id": 15,
+                    "name": "Destiny 2",
+                    "genres": ["Open world", "Massively Multiplayer", "MMORPG", "FPS"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/1085660/header.jpg"
+                },
+                {
+                    "id": 16,
+                    "name": "Stardew Valley",
+                    "genres": ["RPG", "Indie", "Simulation"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/413150/header.jpg"
+                },
+                {
+                    "id": 17,
+                    "name": "Dead by Daylight",
+                    "genres": ["Horror", "Survival", "TPS", "Action"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg"
+                },
+                {
+                    "id": 18,
+                    "name": "Monster Hunter: World",
+                    "genres": ["Action", "RPG", "Open world", "TPS", "Adventure"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/582010/header.jpg"
+                },
+                {
+                    "id": 19,
+                    "name": "Counter-Strike 2",
+                    "genres": ["FPS", "Action"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/730/header.jpg"
+                },
+                {
+                    "id": 20,
+                    "name": "TEKKEN 8",
+                    "genres": ["Actions", "Massively Multiplayer"],
+                    "image_url": "https://steamcdn-a.akamaihd.net/steam/apps/1778820/header.jpg"
+                }
+            ]
+        );
     }, []);
 
-    // const baseGames = useMemo(async () => {
-    //     const baseGamesList = await getBaseGames();
-    //     return baseGamesList
-    // }, [])
-    //
-    // useEffect(() => {
-    //     console.log(baseGames);
-    // }, [baseGames]);
+    const [baseGameList, setBaseGameList] = useState([])
+
+    const baseGames = useCallback(async () => {
+        const baseGamesResult = await getBaseGames();
+        setBaseGameList(baseGamesResult);
+        return baseGamesResult
+    }, [])
+
+    useEffect(() => {
+        baseGames();
+    }, [])
 
 
-    const [selectedItems, setSelectedItems] = useState(Array(imageUrlList.length).fill(false))
+    const [selectedItems, setSelectedItems] = useState(Array(20).fill(false))
     const [isSelectedEnough, setIsSelectedEnough] = useState(false);
 
     const selectedItemCount = useMemo(() => {
@@ -244,8 +177,9 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
     }, [selectedItemCount]);
 
     const selectedGameNames = useMemo(() => {
-        return imageUrlList.filter((_, index) => selectedItems[index]);
-    }, [selectedItems, imageUrlList])
+        return baseGameList.filter((_, index) => selectedItems[index]);
+        // return imageUrlList.filter((_, index) => selectedItems[index]);
+    }, [selectedItems, baseGameList])
 
     useEffect(() => {
         setSelectedBaseGames(selectedGameNames);
@@ -267,7 +201,7 @@ function PageGameSelect({setPageNum, nickName, selectedBaseGames, setSelectedBas
                     </div>
                 </div>
                 <div className={"game-wrapper"}>
-                    {imageUrlList.map((game, index) => {
+                    {baseGameList.map((game, index) => {
                         return (
                             <div key={index} className={"game-item"} onClick={() => handleItemClick(index)}>
                                 <img className={"game-image"} src={game.image_url}

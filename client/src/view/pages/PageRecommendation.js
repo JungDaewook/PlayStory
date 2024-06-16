@@ -203,7 +203,7 @@ function PageRecommendation({nickName, selectedBaseGames}) {
                     </div>
                     <div className={"recommendation-wrapper collaborative"}>
                         <div className="recommendation-text">
-                            {nickName}과 비슷한 사람들은 이런 게임을 선호했어요.
+                            {nickName}님과 비슷한 사람들은 이런 게임을 선호했어요.
                         </div>
                         <div className="recommendation-game">
                             {collaborativeGameList.map((game, index) => {
